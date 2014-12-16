@@ -89,7 +89,7 @@ class LinkList(LinkView, ScoreOrderingView):
     """
 
     date_field = "publish_date"
-    score_fields = ["rating_sum", "comments_count"]
+    score_fields = ["rating_sum"]
 
     def get_queryset(self):
         queryset = super(LinkList, self).get_queryset()
