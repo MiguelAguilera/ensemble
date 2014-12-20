@@ -41,8 +41,9 @@ class Link(Displayable, Ownable):
 
     @property
     def url(self):
-        if self.link:
-            return self.link
+#		Uncomment for direct to link when clicking in item
+#        if self.link:
+#        	return self.link
         return current_request().build_absolute_uri(self.get_absolute_url())
 
     def save(self, *args, **kwargs):
