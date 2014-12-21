@@ -5,7 +5,12 @@
 {% block meta_description %}{% metablock %}{{ object.description }}{% endmetablock %}{% endblock %}
 {% block meta_title %}{{ object.title }}{% endblock %}
 {% block title %}
-<a href="{{ object.url }}">{{ object.title }}</a>
+<div class="link-item clearfix">
+	{% if not profile_user %}{% rating_for link %}{% endif %}
+	<a href="{{ object.url }}">{{ object.title }}</a>
+	
+</div>
+
 <span class="domain">({{ object.domain }})</span>
 {% endblock %}
 
@@ -13,7 +18,6 @@
 <div class="link-view">
     <p class="description">{{ object.description }}</p>
     <div class="link-meta">
-        {% rating_for object %}
         by <a href="{% url "profile" object.user.username %}">{{ object.user.profile }}</a>
         {{ object.publish_date|short_timesince }} ago
         {% keywords_for link as tags %}

@@ -27,10 +27,10 @@ a.brand {
 body {color:#666;}
 
 /* Headings */
-h1 {margin:20px 0 0 100px;}
+h1 {margin:0;}
 h1, h2 {font-size:24px;}
 h2 a:visited {color:rgb(156,188,156);}
-.domain {font-weight:normal; font-size:14px; color:#999;}
+.domain {font-weight:normal; font-size:14px; color:#999;margin: 0 20px 0 0;}
 
 /* Redundant Mezzanine bits */
 legend {display:none;}
@@ -39,7 +39,7 @@ footer {background: none;}
 
 /* Big horizontal grey line everywhere */
 h1, .link-item, .comment-item, .comment-links, #comments h3 {
-    border:0 solid rgba(0,0,0,.02);width: 60%;
+    border:0 solid rgba(0,0,0,.02);width: 100%;
 }
 h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
 #comments h3 {border-top-width:5px;}
@@ -93,7 +93,7 @@ h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
 .link-item, .comment-item {margin: 0; padding: 15px 0;}
 .link-view .rating i {float:left; margin:8px 0 0 -4px;}
 .link-view .description {
-  margin:20px 0 0 100px;
+  margin:20px 0 0 0;
   width: 60%;
   overflow: auto;
   border: 0px;
