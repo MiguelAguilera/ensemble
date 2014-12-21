@@ -27,7 +27,7 @@ a.brand {
 body {color:#666;}
 
 /* Headings */
-h1 {margin:0;}
+h1 {margin:20px 0 0 100px;}
 h1, h2 {font-size:24px;}
 h2 a:visited {color:rgb(156,188,156);}
 .domain {font-weight:normal; font-size:14px; color:#999;}
@@ -39,7 +39,7 @@ footer {background: none;}
 
 /* Big horizontal grey line everywhere */
 h1, .link-item, .comment-item, .comment-links, #comments h3 {
-    border:0 solid rgba(0,0,0,.02);
+    border:0 solid rgba(0,0,0,.02);width: 60%;
 }
 h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
 #comments h3 {border-top-width:5px;}
@@ -92,7 +92,17 @@ h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
 /* Link listing, details */
 .link-item, .comment-item {margin: 0; padding: 15px 0;}
 .link-view .rating i {float:left; margin:8px 0 0 -4px;}
-.link-view .description {margin:20px 0;}
+.link-view .description {
+  margin:20px 0 0 100px;
+  width: 60%;
+  overflow: auto;
+  border: 0px;
+  padding: 0;
+  font-family: monospace;
+  white-space: pre-wrap;
+  
+/*  background:none; */
+  }
 .link-meta .rating {margin:0 5px 0 0 !important;}
 
 /* Comments */
