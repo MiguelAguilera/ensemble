@@ -44,7 +44,7 @@ def order_by_score(queryset, score_fields, date_field, reverse=True):
         for obj in queryset:
 			seconds = (getattr(obj, date_field).replace(tzinfo=None) - datetime.datetime.fromtimestamp(1134028003)).total_seconds() 
 			s = sum([getattr(obj, f) for f in score_fields])
-			order = log10(max(abs(s), 1))
+			order = log10(max(abs(s)+1, 1))
 			if s > 0:
 				sign = 1
 			elif s < 0:
