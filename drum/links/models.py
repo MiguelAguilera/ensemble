@@ -63,8 +63,10 @@ class Link(Displayable, Ownable):
 class Profile(models.Model):
 
     user = models.OneToOneField("auth.User")
-    website = models.URLField(blank=True)
-    bio = models.TextField(blank=True)
+#    website = models.URLField(blank=True)
+#    bio = models.TextField(blank=True)
+    website = models.URLField(blank=True, editable=False)
+    bio = models.TextField(blank=True, editable=False)
     karma = models.IntegerField(default=0, editable=False)
 
     def __unicode__(self):
