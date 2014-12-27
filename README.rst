@@ -1,12 +1,15 @@
 
-Drum
+Ensemble
 ====
 
-Created by `Stephen McDonald <http://twitter.com/stephen_mcd>`_
+Fork of Drum <https://github.com/stephenmcd/drum> with customization
+aimed for collaborative creation of conents.
 
-Drum is a Reddit / Hacker News clone, built using `Mezzanine`_
-and `Django`_. It is `BSD licensed`_, and designed to demonstrate
-some of the non-CMS capabilities of Mezzanine, such as threaded
+
+Drum is a Reddit / Hacker News clone created by `Stephen McDonald <http://twitter.com/stephen_mcd>`_, 
+built using `Mezzanine`_ and `Django`_. It is `BSD licensed`_, 
+and designed to demonstrate some of the non-CMS capabilities of 
+Mezzanine, such as threaded
 comments, ratings, and public user accounts.
 
 Check out the blog post `Building Social Apps with Mezzanine`_,
