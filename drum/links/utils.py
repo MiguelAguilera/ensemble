@@ -18,7 +18,7 @@ def order_by_score(queryset, score_fields, date_field, reverse=True):
     """
 
     scale = getattr(settings, "SCORE_SCALE_FACTOR", 2)
-    timeweight = 45000.0
+    timeweight = 45000.0*7
 	
     # Timestamp SQL function snippets mapped to DB backends.
     # Defining these assumes the SQL functions POW() and NOW()
