@@ -2,7 +2,7 @@
 Ensemble
 ====
 
-Fork of Drum <http://github.com/stephenmcd/drum> with customization
+Fork of Drum `<http://github.com/stephenmcd/drum>`_ with customization
 aimed for collaborative creation of conents.
 
 
