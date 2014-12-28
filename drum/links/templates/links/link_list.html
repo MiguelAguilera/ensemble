@@ -21,7 +21,9 @@
         {% for tag in tags %}
         <a href="{% url "link_list_tag" tag.slug %}">{{ tag }}</a> |
         {% endfor %}
-        <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comment{{ link.comments_count|pluralize }} </a>
+        <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comment{{ link.comments_count|pluralize }} </a> |
+        {{ link.rating_count }} votos |
+        {{ link.rating_average|floatformat:"10"|add:"1"|floatformat:"2" }} % positivos
     </div>
 </div>
 {% empty %}

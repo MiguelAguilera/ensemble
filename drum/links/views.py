@@ -16,8 +16,7 @@ from mezzanine.utils.views import paginate
 
 from drum.links.forms import LinkForm
 from drum.links.models import Link
-from drum.links.utils import order_by_score
-
+from drum.links.utils import order_by_score, order_by_consesus
 
 class UserFilterView(ListView):
     """
@@ -61,8 +60,11 @@ class ScoreOrderingView(UserFilterView):
         context = super(ScoreOrderingView, self).get_context_data(**kwargs)
         qs = context["object_list"]
         context["by_score"] = self.kwargs.get("by_score", True)
+        context["by_consensus"] = self.kwargs.get("by_consensus", True)
         if context["by_score"]:
             qs = order_by_score(qs, self.score_fields, self.date_field)
+        elif context["by_consensus"]:
+            qs = order_by_consesus(qs, self.score_fields, self.date_field)
         else:
             qs = qs.order_by("-" + self.date_field)
         context["object_list"] = paginate(qs, self.request.GET.get("page", 1),
@@ -100,10 +102,13 @@ class LinkList(LinkView, ScoreOrderingView):
 
     def get_title(self, context):
         tag = self.kwargs.get("tag")
+        print context["by_score"],context["by_consensus"]
         if tag:
             return get_object_or_404(Keyword, slug=tag).title
         if context["by_score"]:
             return ""  # Homepage
+        if context["by_consensus"]:
+            return "Consensus"
         if context["profile_user"]:
             return "Links by %s" % context["profile_user"].profile
         else:
