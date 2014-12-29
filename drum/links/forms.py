@@ -13,7 +13,7 @@ class LinkForm(BaseLinkForm):
     def clean(self):
         link = self.cleaned_data.get("link", None)
         description = self.cleaned_data.get("description", None)
-        if not link:
+        if not description:
             raise ValidationError("Description is required")
 #        if not link and not description:
 #            raise ValidationError("Either a link or description is required")
