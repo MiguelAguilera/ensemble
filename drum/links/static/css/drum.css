@@ -5,13 +5,13 @@
 .navbar a.btn {padding:3px 10px !important; margin:7px 3px;}
 .navbar-search .btn {display:none;}
 a.brand {
-    background:url('../img/drum-logo.png') no-repeat; background-position:5px 6px;
+    background:url('../img/ensemble-logo.png') no-repeat; background-position:5px 6px;
     text-indent:13px; margin-left:-3px !important;
-    font-family: 'Risque', cursive;
-    font-size:28px !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size:26px !important;
     padding:3px 20px !important;
     text-decoration:none;
-    color:#fff !important;
+    color:black !important;
 }
 @media (max-width: 600px) {
     a.brand {text-indent:40px; padding:0 !important; width:30px; overflow:hidden;
