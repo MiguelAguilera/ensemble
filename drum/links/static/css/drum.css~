@@ -85,7 +85,7 @@ h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
   line-height: 40px
 }
 
-.link-detail {width:80%;}
+.link-detail {width:60%;}
 @media (max-width: 600px) {.link-detail {width:60%;}}
 .link-detail a.profile, .link-detail a.comments {color:#999;}
 .link-detail a.profile:visited, .link-detail a.comments:visited {color:#bbb;}
