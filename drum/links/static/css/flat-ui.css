@@ -194,7 +194,8 @@ a {
 
 h1 {
   font-size: 32px;
-  font-weight: 900; }
+  font-weight: 900;
+  font-family: 'Ubuntu', sans-serif; }
 
 h2 {
   font-size: 26px;

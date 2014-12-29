@@ -40,7 +40,7 @@ footer {background: none;}
 
 /* Big horizontal grey line everywhere */
 h1, .link-item, .comment-item, .comment-links, #comments h3 {
-    border:0 solid rgba(0,0,0,.02);width: 100%;
+    border:0 solid rgba(0,0,0,.02);width: 75%;
 }
 h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
 #comments h3 {border-top-width:5px;}
@@ -85,8 +85,8 @@ h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
   line-height: 40px
 }
 
-.link-detail {width:60%;}
-@media (max-width: 600px) {.link-detail {width:60%;}}
+.link-detail {width:80%;}
+@media (max-width: 600px) {.link-detail {width:100%;}}
 .link-detail a.profile, .link-detail a.comments {color:#999;}
 .link-detail a.profile:visited, .link-detail a.comments:visited {color:#bbb;}
 
@@ -95,7 +95,7 @@ h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
 .link-view .rating i {float:left; margin:8px 0 0 -4px;}
 .link-view .description {
   margin:20px 0 0 0;
-  width: 60%;
+  width: 75%;
   overflow: auto;
   border: 0px;
   padding: 0;

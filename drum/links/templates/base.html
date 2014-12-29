@@ -63,10 +63,10 @@
         <li{% if tag_list in request.path %} class="active"{% endif %}><a href="{{ tag_list }}">Tags</a></li>
     </ul>
     <div class="nav-collapse">
-<!--        <div class="pull-right">-->
-<!--            <a class="btn btn-small btn-warning no-pjax" href="{% url "link_create" %}">New Link</a>-->
-<!--        </div>-->
-<!--        <ul class="nav pull-right"><li class="divider-vertical"></li></ul>-->
+        <div class="pull-right">
+            <a class="btn btn-small btn-warning no-pjax" href="{% url "link_create" %}">New Link</a>
+        </div>
+        <ul class="nav pull-right"><li class="divider-vertical"></li></ul>
         {% search_form %}
         {% nevercache %}
         {% include "accounts/includes/user_panel_nav.html" %}
@@ -86,39 +86,47 @@
 {% endfor %}
 {% endnevercache %}
 
-<div class="container">
-	<center>
-	<a class="btn btn-large no-pjax" href="{% url "link_create" %}">Submit new proposal</a>
-	</center>
-</div>
+<div>
+	<div class="nav-collapse" style="float:right; width:25%;">
+		<div class="pull-right">
+		<a class="btn btn-small btn-warning no-pjax" href="{% url "link_create" %}">New Link</a>
+		</div>
+	</div>
+    
+	<div style="float:left; width:75%;">
+		<div class="container main">
+		{% nevercache %}
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags }}" data-alert="alert">
+		<a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+		</div>
+		{% endfor %}
+		{% endnevercache %}
+		<h1>{% block title %}{% endblock %}</h1>
+		</div>
+		<div class="container main">
+		<div class="row">
+		<div class="span12 middle">
+		{% block main %}{% endblock %}
+		</div>
+		</div>
+		</div>  
+		
+		<footer>
+		<div class="container">
+		<p>
+		<a href="https://github.com/MiguelAguilera/ensemble">Open Source</a>
+		<span class="separator">|</span>
+		{% trans "Powered by" %} <a href="http://mezzanine.jupo.org">Mezzanine</a>
+		</p>
+		</div>
+		</footer>
 
+		{% include "includes/footer_scripts.html" %}
+	</div>
+</div> 
+	
 
-<h1>{% block title %}{% endblock %}</h1>
-</div>
-
-<div class="container main">
-<div class="row">
-<div class="span12 middle">
-    {% block main %}{% endblock %}
-</div>
-</div>
-</div>
-
-<footer>
-<div class="container">
-    <p>
-        <!-- 
-	Made by <a href="http://twitter.com/stephen_mcd">Stephen McDonald</a>
-        <span class="separator">|</span>
-	-->
-        <a href="https://github.com/MiguelAguilera/ensemble">Open Source</a>
-        <span class="separator">|</span>
-        {% trans "Powered by" %} <a href="http://mezzanine.jupo.org">Mezzanine</a>
-    </p>
-</div>
-</footer>
-
-{% include "includes/footer_scripts.html" %}
 
 </body>
 </html>
