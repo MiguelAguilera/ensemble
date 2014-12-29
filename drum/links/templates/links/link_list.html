@@ -12,18 +12,19 @@
     {% if not profile_user %}{% rating_for link %}{% endif %}
     <div class="link-detail{% if link.rating_sum < 0 %} link-negative{% endif %}">
         <h2>
-            <a href="{{ link.url }}">{{ link.title }}</a>
-            <span class="domain">({{ link.domain }})</span>
+            <a href="{{ link.url }}">{{ link.title }}</a> <br>
+<!--            <span class="domain">({{ link.domain }})</span>-->
         </h2>
+        
         by <a class="profile" href="{% url "profile" link.user.username %}">{{ link.user.profile }}</a>
         {{ link.publish_date|short_timesince }} ago |
         {% keywords_for link as tags %}
         {% for tag in tags %}
         <a href="{% url "link_list_tag" tag.slug %}">{{ tag }}</a> |
         {% endfor %}
-        <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comment{{ link.comments_count|pluralize }} </a> |
         {{ link.rating_count }} votos |
-        {{ link.rating_average|floatformat:"10"|add:"1"|floatformat:"2" }} % positivos
+        {{ link.rating_average|addfloat:"1"|mult:"50"|floatformat:"0"}}% positivos |
+        <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comment{{ link.comments_count|pluralize }} </a>
     </div>
 </div>
 {% empty %}
