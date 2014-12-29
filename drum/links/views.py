@@ -62,7 +62,6 @@ class ScoreOrderingView(UserFilterView):
         
 #        context["by_score"] = self.kwargs.get("by_score", True)
         order= self.kwargs.get("order", True)
-        print order
         qs = order_by_score(qs, self.date_field,order)
         context["object_list"] = paginate(qs, self.request.GET.get("page", 1),
             settings.ITEMS_PER_PAGE, settings.MAX_PAGING_LINKS)
