@@ -63,10 +63,10 @@
         <li{% if tag_list in request.path %} class="active"{% endif %}><a href="{{ tag_list }}">Tags</a></li>
     </ul>
     <div class="nav-collapse">
-        <div class="pull-right">
-            <a class="btn btn-small btn-warning no-pjax" href="{% url "link_create" %}">New Link</a>
-        </div>
-        <ul class="nav pull-right"><li class="divider-vertical"></li></ul>
+<!--        <div class="pull-right">-->
+<!--            <a class="btn btn-small btn-warning no-pjax" href="{% url "link_create" %}">New Link</a>-->
+<!--        </div>-->
+<!--        <ul class="nav pull-right"><li class="divider-vertical"></li></ul>-->
         {% search_form %}
         {% nevercache %}
         {% include "accounts/includes/user_panel_nav.html" %}
@@ -76,6 +76,7 @@
 </div>
 </div>
 
+
 <div class="container main">
 {% nevercache %}
 {% for message in messages %}
@@ -84,6 +85,14 @@
 </div>
 {% endfor %}
 {% endnevercache %}
+
+<div class="container">
+	<center>
+	<a class="btn btn-large no-pjax" href="{% url "link_create" %}">Submit new proposal</a>
+	</center>
+</div>
+
+
 <h1>{% block title %}{% endblock %}</h1>
 </div>
 

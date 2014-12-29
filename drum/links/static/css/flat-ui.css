@@ -180,7 +180,7 @@ body {
 
 
 a {
-  color: #696969;
+  color: #505050;
   font-family: 'Ubuntu', sans-serif;
 /*  text-decoration: underline;*/
   -webkit-transition: 0.25s;
@@ -256,7 +256,8 @@ h6 {
     color: white; }
   .btn.btn-large {
     padding-bottom: 12px;
-    padding-top: 13px; }
+    padding-top: 13px;
+    margin-bottom: 15px; }
   .btn.btn-primary {
     background-color: #1abc9c; }
     .btn.btn-primary:hover, .btn.btn-primary:focus {
@@ -608,10 +609,10 @@ h6 {
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
 
 .navbar-inverse .navbar-inner {
-  background: #34495e;
+  background: #f9f9f9;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
 .navbar-inverse .nav > li > a {
-  color: white; }
+  color: black; }
 .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
   background-color: transparent;
   color: #1abc9c;
