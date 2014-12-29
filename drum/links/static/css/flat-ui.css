@@ -181,7 +181,6 @@ body {
 
 a {
   color: #505050;
-  font-family: 'Ubuntu', sans-serif;
 /*  text-decoration: underline;*/
   -webkit-transition: 0.25s;
   -moz-transition: 0.25s;
@@ -199,10 +198,12 @@ h1 {
 
 h2 {
   font-size: 26px;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: 700;
   margin-bottom: 2px; }
 
 h3 {
+  font-family: 'Ubuntu', sans-serif;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 4px;
