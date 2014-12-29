@@ -16,7 +16,7 @@ from mezzanine.utils.views import paginate
 
 from drum.links.forms import LinkForm
 from drum.links.models import Link
-from drum.links.utils import order_by_score, compute_average
+from drum.links.utils import order_by_score
 
 class UserFilterView(ListView):
     """
@@ -59,7 +59,6 @@ class ScoreOrderingView(UserFilterView):
     def get_context_data(self, **kwargs):
         context = super(ScoreOrderingView, self).get_context_data(**kwargs)
         qs = context["object_list"]
-        compute_average(qs)
         
 #        context["by_score"] = self.kwargs.get("by_score", True)
         order= self.kwargs.get("order", True)
@@ -77,6 +76,7 @@ class LinkView(object):
     queryset.
     """
     def get_queryset(self):
+    	qs= Link.objects.published().select_related("user", "user__profile")
         return Link.objects.published().select_related("user", "user__profile")
 
 
@@ -96,7 +96,6 @@ class LinkList(LinkView, ScoreOrderingView):
         tag = self.kwargs.get("tag")
         if tag:
             queryset = queryset.filter(keywords__keyword__slug=tag)
-#        queryset=compute_average(queryset)
         return queryset.prefetch_related("keywords__keyword")
 
     def get_title(self, context,order):
