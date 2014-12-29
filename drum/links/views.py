@@ -16,7 +16,7 @@ from mezzanine.utils.views import paginate
 
 from drum.links.forms import LinkForm
 from drum.links.models import Link
-from drum.links.utils import order_by_score, order_by_consesus
+from drum.links.utils import order_by_score, compute_average
 
 class UserFilterView(ListView):
     """
@@ -59,17 +59,15 @@ class ScoreOrderingView(UserFilterView):
     def get_context_data(self, **kwargs):
         context = super(ScoreOrderingView, self).get_context_data(**kwargs)
         qs = context["object_list"]
-        context["by_score"] = self.kwargs.get("by_score", True)
-        context["by_consensus"] = self.kwargs.get("by_consensus", True)
-        if context["by_score"]:
-            qs = order_by_score(qs, self.score_fields, self.date_field)
-        elif context["by_consensus"]:
-            qs = order_by_consesus(qs, self.score_fields, self.date_field)
-        else:
-            qs = qs.order_by("-" + self.date_field)
+        compute_average(qs)
+        
+#        context["by_score"] = self.kwargs.get("by_score", True)
+        order= self.kwargs.get("order", True)
+        print order
+        qs = order_by_score(qs, self.date_field,order)
         context["object_list"] = paginate(qs, self.request.GET.get("page", 1),
             settings.ITEMS_PER_PAGE, settings.MAX_PAGING_LINKS)
-        context["title"] = self.get_title(context)
+        context["title"] = self.get_title(context,order)
         return context
 
 
@@ -98,22 +96,23 @@ class LinkList(LinkView, ScoreOrderingView):
         tag = self.kwargs.get("tag")
         if tag:
             queryset = queryset.filter(keywords__keyword__slug=tag)
+#        queryset=compute_average(queryset)
         return queryset.prefetch_related("keywords__keyword")
 
-    def get_title(self, context):
+    def get_title(self, context,order):
         tag = self.kwargs.get("tag")
-        print context["by_score"],context["by_consensus"]
         if tag:
             return get_object_or_404(Keyword, slug=tag).title
-        if context["by_score"]:
+        if order=='hot':
             return ""  # Homepage
-        if context["by_consensus"]:
+        if order=='consensus':
             return "Consensus"
+        if order=='latest':
+            return "Latest"
+        if order=='top':
+            return "Top" 
         if context["profile_user"]:
             return "Links by %s" % context["profile_user"].profile
-        else:
-            return "Newest"
-
 
 class LinkCreate(CreateView):
     """
