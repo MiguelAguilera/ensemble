@@ -63,11 +63,11 @@
         <li{% if tag_list in request.path %} class="active"{% endif %}><a href="{{ tag_list }}">Tags</a></li>
     </ul>
     <div class="nav-collapse">
-        <div class="pull-right">
-            <a class="btn btn-small btn-warning no-pjax" href="{% url "link_create" %}">New Link</a>
-        </div>
-        <ul class="nav pull-right"><li class="divider-vertical"></li></ul>
-        {% search_form %}
+<!--        <div class="pull-right">-->
+<!--            <a class="btn btn-small btn-warning no-pjax" href="{% url "link_create" %}">New Link</a>-->
+<!--        </div>-->
+<!--        <ul class="nav pull-right"><li class="divider-vertical"></li></ul>-->
+<!--        {% search_form %}-->
         {% nevercache %}
         {% include "accounts/includes/user_panel_nav.html" %}
         {% endnevercache %}
@@ -89,12 +89,13 @@
 <div>
     <div class="nav-collapse" style="float:right; width:25%; position:relative;">
         <div align="right" style="margin: 10px 10px 10px 0">
+        	{% search_form %}<br><br><br>
             <a class="btn btn-large no-pjax" href="{% url "link_create" %}">New Proposal</a>
         </div>
-        {% search_form %}<br><br><br><br>
-        {% nevercache %}
-        {% include "accounts/includes/user_panel_nav.html" %}
-        {% endnevercache %}
+        
+<!--        {% nevercache %}-->
+<!--        {% include "accounts/includes/user_panel_nav.html" %}-->
+<!--        {% endnevercache %}-->
         </div>
     </div>
     

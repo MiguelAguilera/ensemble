@@ -43,19 +43,20 @@ def div(value, arg):
 @register.filter(name='addfloat')
 def addfloat(value, arg):
     "Sums the arg and the value"
-    print value
     if not value:
     	return 0
     return float(value) + float(arg)
 
-#def sub(value, arg):
-#    "Subtracts the arg from the value"
-#    return int(value) - int(arg)
+@register.inclusion_tag("includes/form_fields.html", takes_context=True)
+def hidden_fields_for(context, form):
+	"""
+	Renders fields for a form.
+	"""
+	from django import forms
+	form.fields['email'].widget = forms.HiddenInput()
+	form.fields['url'].widget = forms.HiddenInput()
+	form.fields['name'].widget = forms.HiddenInput()
 
-#def div(value, arg):
-#    "Divides the value by the arg"
-#    return int(value) / int(arg)
-
-#template.register_filter('mult', mult, True)
-#template.register_filter('sub', sub, True)
-#template.register_filter('div', div, True)
+	context["form_for_fields"] = form
+	
+	return context
