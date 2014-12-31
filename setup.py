@@ -3,11 +3,11 @@ import os
 import sys
 from setuptools import setup, find_packages
 from shutil import rmtree
-from drum import __version__ as version
+from ensemble import __version__ as version
 
 
-exclude = ["drum/project_template/dev.db",
-           "drum/project_template/local_settings.py"]
+exclude = ["ensemble/project_template/dev.db",
+           "ensemble/project_template/local_settings.py"]
 if sys.argv == ["setup.py", "test"]:
     exclude = []
 exclude = dict([(e, None) for e in exclude])
@@ -45,7 +45,7 @@ try:
         description="A Reddit / Hacker News clone for Django.",
         long_description=open("README.rst", 'rb').read().decode('utf-8'),
         license="BSD",
-        url="http://drum.jupo.org/",
+        url="http://ensemble.jupo.org/",
         zip_safe=False,
         include_package_data=True,
         packages=find_packages(),
