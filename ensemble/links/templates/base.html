@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+{% load mezzanine_tags i18n future staticfiles %}
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
+
+<style>
+@import url("http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic");
+@import url(http://fonts.googleapis.com/css?family=Risque);
+</style>
+{% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap2.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/mezzanine1.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/flat-ui.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/ensemble.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap2-responsive.css">
+{% endcompress %}
+
+{% compress js %}
+<script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}"></script>
+<script src="{{ STATIC_URL }}js/bootstrap2.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap2-extras.js"></script>
+<script src="{{ STATIC_URL }}js/ensemble.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.pjax.js"></script>
+{% endcompress %}
+
+{% block extra_head %}{% endblock %}
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse">
+<div class="navbar-inner navbar-fixed-top">
+<div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+
+    {% if settings.SITE_TITLE %}<a class="brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+    <ul class="nav">
+        <li class="divider-vertical"></li>
+        {% url "link_list_hot" as link_list_hot %}
+        {% url "link_list_consensus" as link_list_consensus %}
+        {% url "link_list_top" as link_list_top %}
+        {% url "link_list_latest" as link_list_latest %}
+        {% url "comment_list_best" as comment_list_best %}
+        {% url "comment_list_latest" as comment_list_latest %}
+        {% url "tag_list" as tag_list %}
+        
+        <li{% if request.path == link_list_hot %} class="active"{% endif %}><a href="{{ link_list_hot }}">Hot</a></li>
+        <li{% if request.path == link_list_consensus %} class="active"{% endif %}><a href="{{ link_list_consensus }}">Consensus</a></li>
+        <li{% if request.path == link_list_latest %} class="active"{% endif %}><a href="{{ link_list_latest }}">Latest</a></li>
+        <li{% if request.path == link_list_top %} class="active"{% endif %}><a href="{{ link_list_top }}">Top</a></li>
+<!--        <li{% if request.path == comment_list_top %} class="active"{% endif %}><a href="{{ comment_list_latest }}">Comments</a></li>-->
+        <li{% if tag_list in request.path %} class="active"{% endif %}><a href="{{ tag_list }}">Tags</a></li>
+    </ul>
+    <div class="nav-collapse">
+<!--        <div class="pull-right">-->
+<!--            <a class="btn btn-small btn-warning no-pjax" href="{% url "link_create" %}">New Link</a>-->
+<!--        </div>-->
+<!--        <ul class="nav pull-right"><li class="divider-vertical"></li></ul>-->
+<!--        {% search_form %}-->
+        {% nevercache %}
+        {% include "accounts/includes/user_panel_nav.html" %}
+        {% endnevercache %}
+    </div>
+</div>
+</div>
+</div>
+
+
+<div class="container main">
+{% nevercache %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }}" data-alert="alert">
+    <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+</div>
+{% endfor %}
+{% endnevercache %}
+
+<div>
+    <div class="nav-collapse" style="float:right; width:25%; position:relative;">
+        <div align="right" style="margin: 10px 10px 10px 0">
+        	{% search_form %}<br><br><br>
+            <a class="btn btn-large no-pjax" href="{% url "link_create" %}">New Proposal</a>
+        </div>
+        
+<!--        {% nevercache %}-->
+<!--        {% include "accounts/includes/user_panel_nav.html" %}-->
+<!--        {% endnevercache %}-->
+        </div>
+    </div>
+    
+	<div style="float:left; width:75%;">
+		<div class="container main">
+		{% nevercache %}
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags }}" data-alert="alert">
+		<a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+		</div>
+		{% endfor %}
+		{% endnevercache %}
+		<h1>{% block title %}{% endblock %}</h1>
+		</div>
+		<div class="container main">
+		<div class="row">
+		<div class="span12 middle">
+		{% block main %}{% endblock %}
+		</div>
+		</div>
+		</div>  
+		
+		<footer>
+		<div class="container">
+		<p>
+		<a href="https://github.com/MiguelAguilera/ensemble">Open Source</a>
+		<span class="separator">|</span>
+		{% trans "Powered by" %} <a href="http://mezzanine.jupo.org">Mezzanine</a>
+		</p>
+		</div>
+		</footer>
+
+		{% include "includes/footer_scripts.html" %}
+	</div>
+</div> 
+	
+
+
+</body>
+</html>
