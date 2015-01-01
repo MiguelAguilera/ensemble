@@ -23,7 +23,7 @@
         <a href="{% url "link_list_tag" tag.slug %}">{{ tag }}</a> |
         {% endfor %}
         {{ link.rating_count }} votos |
-        {{ link.rating_average|addfloat:"1"|mult:"50"|floatformat:"0"}}% positivos |
+        {{ link.rating_average|addfloat:"1.0"|mult:"50"|floatformat:"0"}}% positivos |
         <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comment{{ link.comments_count|pluralize }} </a>
     </div>
 </div>
