@@ -16,7 +16,7 @@ def order_by_score(queryset, date_field, order, reverse=True, T=7):
     that don't such as SQLite, we perform the scoring/sorting in
     memory, which will suffice for development.
     """
-    timeweight = 45000.0 * T
+    timeweight = 45000.0 * 2 * T #Reddit -> T=0.5 - ~12h
 	
     # Timestamp SQL function snippets mapped to DB backends.
     # Defining these assumes the SQL functions POW() and NOW()
