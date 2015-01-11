@@ -4,7 +4,7 @@ Ensemble
 
 Fork of `Drum <http://github.com/stephenmcd/drum>`_ with customization
 aimed for collaborative creation of conents. A test version of Ensemble
-can be found `Drum <http://ensemble.maguilera.net>`
+can be found `here <http://ensemble.maguilera.net>`
 
 
 Ensemble is a Reddit clone, 
