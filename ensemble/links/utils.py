@@ -43,7 +43,7 @@ def order_by_score(queryset, date_field, order, reverse=True, T=7):
 			votes = getattr(obj, "rating_count")
 			seconds = (getattr(obj, date_field).replace(tzinfo=None) - datetime.datetime.fromtimestamp(1134028003)).total_seconds() 
 			s = getattr(obj, "rating_sum")
-			
+			score=s
 			if order=='hot':
 				sc = log10(max(abs(s)+1, 1))
 				if s > 0:
