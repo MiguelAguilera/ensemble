@@ -2,19 +2,12 @@
 Ensemble
 ====
 
-Fork of `Ensemble <http://github.com/stephenmcd/ensemble>`_ with customization
+Fork of `Drum <http://github.com/stephenmcd/drum>`_ with customization
 aimed for collaborative creation of conents.
 
 
-Ensemble is a Reddit / Hacker News clone created by `Stephen McDonald <http://twitter.com/stephen_mcd>`_, 
-built using `Mezzanine`_ and `Django`_. It is `BSD licensed`_, 
-and designed to demonstrate some of the non-CMS capabilities of 
-Mezzanine, such as threaded
-comments, ratings, and public user accounts.
-
-Check out the blog post `Building Social Apps with Mezzanine`_,
-which contains a detailed walk-through of how Ensemble was built. A
-`live demo of Ensemble`_ is also available.
+Ensemble is a Reddit clone, 
+built using `Mezzanine`_ and `Django`_.
 
 Dependencies
 ============
@@ -27,13 +20,7 @@ following the installation instructions below.
 Installation
 ============
 
-The easiest method is to install directly from PyPI using `pip`_ by
-running the command below, which will also install the required
-dependencies mentioned above::
-
-    $ pip install -U ensemble
-
-Otherwise, you can download Ensemble and install it directly from source::
+You can download Ensemble and install it directly from source::
 
     $ python setup.py install
 
