@@ -31,7 +31,7 @@ class Link(Displayable, Ownable):
         blank=(not getattr(settings, "LINK_REQUIRED", False)))
     rating = RatingField()
     comments = CommentsField()
-    keywords_string=models.TextField(blank=True, editable=False)
+    #keywords_string=models.CharField('max_length': '500', blank=True, editable=False)
 
     def get_absolute_url(self):
         return reverse("link_detail", kwargs={"slug": self.slug})
