@@ -5,7 +5,7 @@ from django.forms import ValidationError
 from ensemble.links.models import Link
 
 
-BaseLinkForm = modelform_factory(Link, fields=["title", "description","keywords"])
+BaseLinkForm = modelform_factory(Link, fields=["title", "description","keywords_string"])
 #BaseLinkForm = modelform_factory(Link, fields=["title", "link", "description"])
 
 class LinkForm(BaseLinkForm):
