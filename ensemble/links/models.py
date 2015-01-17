@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from future import standard_library
 from future.builtins import int
@@ -31,7 +32,15 @@ class Link(Displayable, Ownable):
         blank=(not getattr(settings, "LINK_REQUIRED", False)))
     rating = RatingField()
     comments = CommentsField()
-    keywords_string=models.CharField('max_length': '500', blank=True, editable=True)
+    
+    YEAR_IN_SCHOOL_CHOICES = (
+        ('municipalismo', 'Municipalismo'),
+        ('cultura', 'Cultura'),
+        ('educación', 'Educación'),
+    )
+    tags = models.CharField(max_length=50,
+                                      choices=YEAR_IN_SCHOOL_CHOICES,
+                                      default='tag1')
 
     def get_absolute_url(self):
         return reverse("link_detail", kwargs={"slug": self.slug})
@@ -53,11 +62,15 @@ class Link(Displayable, Ownable):
             variations = lambda word: [word,
                 sub("^([^A-Za-z0-9])*|([^A-Za-z0-9]|s)*$", "", word),
                 sub("^([^A-Za-z0-9])*|([^A-Za-z0-9])*$", "", word)]
-            keywords = sum(map(variations, split("\s|/", self.title)), [])
+            keywords = sum(map(variations, split("\s|/", self.tags)), [])
         super(Link, self).save(*args, **kwargs)
         if keywords:
             lookup = reduce(ior, [Q(title__iexact=k) for k in keywords])
+            for k in keywords:
+                Keyword.objects.get_or_create(title=k)
             for keyword in Keyword.objects.filter(lookup):
+            	print keyword
+            	print type(keyword)
                 self.keywords.add(AssignedKeyword(keyword=keyword))
 
 
