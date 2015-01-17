@@ -55,10 +55,10 @@
         {% url "comment_list_latest" as comment_list_latest %}
         {% url "tag_list" as tag_list %}
         
-        <li{% if request.path == link_list_hot %} class="active"{% endif %}><a href="{{ link_list_hot }}">Hot</a></li>
-        <li{% if request.path == link_list_consensus %} class="active"{% endif %}><a href="{{ link_list_consensus }}">Consensus</a></li>
-        <li{% if request.path == link_list_latest %} class="active"{% endif %}><a href="{{ link_list_latest }}">Latest</a></li>
-        <li{% if request.path == link_list_top %} class="active"{% endif %}><a href="{{ link_list_top }}">Top</a></li>
+        <li{% if request.path == link_list_hot %} class="active"{% endif %}><a href="{{ link_list_hot }}">Populares</a></li>
+        <li{% if request.path == link_list_consensus %} class="active"{% endif %}><a href="{{ link_list_consensus }}">Consenso</a></li>
+        <li{% if request.path == link_list_latest %} class="active"{% endif %}><a href="{{ link_list_latest }}">Recientes</a></li>
+        <li{% if request.path == link_list_top %} class="active"{% endif %}><a href="{{ link_list_top }}">Más votadas</a></li>
 <!--        <li{% if request.path == comment_list_top %} class="active"{% endif %}><a href="{{ comment_list_latest }}">Comments</a></li>-->
         <li{% if tag_list in request.path %} class="active"{% endif %}><a href="{{ tag_list }}">Tags</a></li>
     </ul>
@@ -90,7 +90,7 @@
     <div class="nav-collapse" style="float:right; width:25%; position:relative;">
         <div align="right" style="margin: 10px 10px 10px 0">
         	{% search_form %}<br><br><br>
-            <a class="btn btn-large no-pjax" href="{% url "link_create" %}">New Proposal</a>
+            <a class="btn btn-large no-pjax" href="{% url "link_create" %}">Nueva propuesta</a>
         </div>
         
 <!--        {% nevercache %}-->
