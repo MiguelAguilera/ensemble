@@ -101,14 +101,14 @@ class LinkList(LinkView, ScoreOrderingView):
         tag = self.kwargs.get("tag")
         if tag:
             return get_object_or_404(Keyword, slug=tag).title
-        if order=='hot':
+        if order=='Populares':
             return ""  # Homepage
         if order=='consensus':
-            return "Consensus"
+            return "Consenso"
         if order=='latest':
-            return "Latest"
+            return "Recientes"
         if order=='top':
-            return "Top" 
+            return "Más votadas" 
         if context["profile_user"]:
             return "Links by %s" % context["profile_user"].profile
 
