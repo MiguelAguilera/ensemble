@@ -21,7 +21,7 @@
         {% endfor %}
         {{ link.rating_count }} votos |
         {{ link.rating_average|addfloat:"1"|mult:"50"|floatformat:"0"}}% positivos |
-        <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comentarios{{ link.comments_count|pluralize }} </a>
+        <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comentario{{ link.comments_count|pluralize }} </a>
     </div>
 </div>
 
