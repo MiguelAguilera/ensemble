@@ -34,13 +34,12 @@ class Link(Displayable, Ownable):
     comments = CommentsField()
     
     YEAR_IN_SCHOOL_CHOICES = (
+        ('None', '---'),
         ('Municipalismo', 'Municipalismo'),
         ('Cultura', 'Cultura'),
         ('Educación', 'Educación'),
     )
-    tags = models.CharField(max_length=50,
-                                      choices=YEAR_IN_SCHOOL_CHOICES,
-                                      default='tag1')
+    tags = models.CharField(max_length=50, choices=YEAR_IN_SCHOOL_CHOICES, default='')
 
     def get_absolute_url(self):
         return reverse("link_detail", kwargs={"slug": self.slug})
@@ -67,7 +66,8 @@ class Link(Displayable, Ownable):
         if keywords:
             lookup = reduce(ior, [Q(title__iexact=k) for k in keywords])
             for k in keywords:
-                Keyword.objects.get_or_create(title=k)
+            	if k!='None':
+            	    Keyword.objects.get_or_create(title=k)
             for keyword in Keyword.objects.filter(lookup):
             	print keyword
             	print type(keyword)
