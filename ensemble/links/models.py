@@ -34,9 +34,9 @@ class Link(Displayable, Ownable):
     comments = CommentsField()
     
     YEAR_IN_SCHOOL_CHOICES = (
-        ('municipalismo', 'Municipalismo'),
-        ('cultura', 'Cultura'),
-        ('educación', 'Educación'),
+        ('Municipalismo', 'Municipalismo'),
+        ('Cultura', 'Cultura'),
+        ('Educación', 'Educación'),
     )
     tags = models.CharField(max_length=50,
                                       choices=YEAR_IN_SCHOOL_CHOICES,
