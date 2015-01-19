@@ -47,6 +47,7 @@
     {% if settings.SITE_TITLE %}<a class="brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
     <ul class="nav">
         <li class="divider-vertical"></li>
+        {% url "home" as home %}
         {% url "link_list_hot" as link_list_hot %}
         {% url "link_list_consensus" as link_list_consensus %}
         {% url "link_list_top" as link_list_top %}
@@ -54,20 +55,22 @@
         {% url "comment_list_best" as comment_list_best %}
         {% url "comment_list_latest" as comment_list_latest %}
         {% url "tag_list" as tag_list %}
+        {% url "link_list_tag" as link_list_tag %}
         
-        <li{% if request.path == link_list_hot %} class="active"{% endif %}><a href="{{ link_list_hot }}">Populares</a></li>
-        <li{% if request.path == link_list_consensus %} class="active"{% endif %}><a href="{{ link_list_consensus }}">Consenso</a></li>
-        <li{% if request.path == link_list_latest %} class="active"{% endif %}><a href="{{ link_list_latest }}">Recientes</a></li>
-        <li{% if request.path == link_list_top %} class="active"{% endif %}><a href="{{ link_list_top }}">Más votadas</a></li>
+<!--        <li{% if request.path == link_list_hot %} class="active"{% endif %}><a href="{{ link_list_hot }}">Populares</a></li>-->
+<!--        <li{% if request.path == link_list_consensus %} class="active"{% endif %}><a href="{{ link_list_consensus }}">Consenso</a></li>-->
+<!--        <li{% if request.path == link_list_latest %} class="active"{% endif %}><a href="{{ link_list_latest }}">Recientes</a></li>-->
+<!--        <li{% if request.path == link_list_top %} class="active"{% endif %}><a href="{{ link_list_top }}">Más votadas</a></li>-->
 <!--        <li{% if request.path == comment_list_top %} class="active"{% endif %}><a href="{{ comment_list_latest }}">Comments</a></li>-->
+        <li{% if tag_list in request.path %} class="active"{% endif %}><a href="{{ home }}">Ver todas</a></li>
         <li{% if tag_list in request.path %} class="active"{% endif %}><a href="{{ tag_list }}">Secciones</a></li>
     </ul>
     <div class="nav-collapse">
 <!--        <div class="pull-right">-->
 <!--            <a class="btn btn-small btn-warning no-pjax" href="{% url "link_create" %}">New Link</a>-->
 <!--        </div>-->
-<!--        <ul class="nav pull-right"><li class="divider-vertical"></li></ul>-->
-<!--        {% search_form %}-->
+        <ul class="nav pull-right"><li class="divider-vertical"></li></ul>
+        {% search_form %}
         {% nevercache %}
         {% include "accounts/includes/user_panel_nav.html" %}
         {% endnevercache %}
@@ -88,9 +91,15 @@
 
 <div>
     <div class="nav-collapse" style="float:right; width:25%; position:relative;">
-        <div align="right" style="margin: 10px 10px 10px 0">
-        	{% search_form %}<br><br><br>
+        <div align="left" style="margin: 10px 10px 10px 0">
+<!--        	{% search_form %}<br><br><br>-->
             <a class="btn btn-large no-pjax" href="{% url "link_create" %}">Nueva propuesta</a>
+            
+            <br><br>
+            <h2 class="nav"> Secciones: </h2>
+            <a class="btn btn-primary no-pjax" href="{% url "link_list_tag" "municipalismo" %}">Municipalismo</a>
+            <br><br><a class="btn btn-primary no-pjax" href="{% url "link_list_tag" "cultura" %}">Cultura</a>
+            <br><br><a class="btn btn-primary no-pjax" href="{% url "link_list_tag" "educación" %}">Educación</a>
         </div>
         
 <!--        {% nevercache %}-->

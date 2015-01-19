@@ -66,6 +66,7 @@ class ScoreOrderingView(UserFilterView):
         context["object_list"] = paginate(qs, self.request.GET.get("page", 1),
             settings.ITEMS_PER_PAGE, settings.MAX_PAGING_LINKS)
         context["title"] = self.get_title(context,order)
+        context["tag"] = self.get_tag(context,order)
         return context
 
 
@@ -111,6 +112,14 @@ class LinkList(LinkView, ScoreOrderingView):
             return "" 
         if context["profile_user"]:
             return "Links by %s" % context["profile_user"].profile
+    
+    def get_tag(self, context,order):
+        tag = self.kwargs.get("tag")
+        if tag:
+            return tag
+        else:
+            return None
+            
 
 class LinkCreate(CreateView):
     """

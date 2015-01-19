@@ -5,7 +5,32 @@
 {% block meta_title %}{{ title|default:"Home" }}{% endblock %}
 {% block title %}{{ title }}{% endblock %}
 
+{% url "link_list_hot" as link_list_hot %}
+{% url "link_list_consensus" as link_list_consensus %}
+{% url "link_list_top" as link_list_top %}
+{% url "link_list_latest" as link_list_latest %}
+        
+{% url "link_list_tag_hot" as link_list_tag_hot %}
+{% url "link_list_tag_consensus" as link_list_tag_consensus %}
+{% url "link_list_tag_latest" as link_list_tag_latest %}
+{% url "link_list_tag_top" as link_list_tag_top %}
+
 {% block main %}
+
+<br>
+
+{% if tag%}
+	<a class="btn btn-large no-pjax" href="{% url "link_list_tag_hot" tag %}">Populares</a>
+	<a class="btn btn-large no-pjax" href="{% url "link_list_tag_consensus" tag %}">Consenso</a>
+	<a class="btn btn-large no-pjax" href="{% url "link_list_tag_latest" tag %}">Recientes</a>
+	<a class="btn btn-large no-pjax" href="{% url "link_list_tag_top" tag %}">Más votadas</a>
+{% else %}
+	<a class="btn btn-large no-pjax" href="{% url "link_list_hot" %}">Populares</a>
+	<a class="btn btn-large no-pjax" href="{% url "link_list_consensus" %}">Consenso</a>
+	<a class="btn btn-large no-pjax" href="{% url "link_list_latest" %}">Recientes</a>
+	<a class="btn btn-large no-pjax" href="{% url "link_list_top" %}">Más votadas</a>
+{% endif %}
+
 
 {% for link in object_list %}
 <div class="link-item clearfix">
