@@ -20,15 +20,15 @@
 <br>
 
 {% if tag%}
-	<a class="btn btn-large no-pjax" href="{% url "link_list_tag_hot" tag %}">Populares</a>
-	<a class="btn btn-large no-pjax" href="{% url "link_list_tag_consensus" tag %}">Consenso</a>
-	<a class="btn btn-large no-pjax" href="{% url "link_list_tag_latest" tag %}">Recientes</a>
-	<a class="btn btn-large no-pjax" href="{% url "link_list_tag_top" tag %}">Más votadas</a>
+	<a class="btn no-pjax" href="{% url "link_list_tag_hot" tag %}">Populares</a>
+	<a class="btn no-pjax" href="{% url "link_list_tag_consensus" tag %}">Consenso</a>
+	<a class="btn no-pjax" href="{% url "link_list_tag_latest" tag %}">Recientes</a>
+	<a class="btn no-pjax" href="{% url "link_list_tag_top" tag %}">Más votadas</a>
 {% else %}
-	<a class="btn btn-large no-pjax" href="{% url "link_list_hot" %}">Populares</a>
-	<a class="btn btn-large no-pjax" href="{% url "link_list_consensus" %}">Consenso</a>
-	<a class="btn btn-large no-pjax" href="{% url "link_list_latest" %}">Recientes</a>
-	<a class="btn btn-large no-pjax" href="{% url "link_list_top" %}">Más votadas</a>
+	<a class="btn no-pjax" href="{% url "link_list_hot" %}">Populares</a>
+	<a class="btn no-pjax" href="{% url "link_list_consensus" %}">Consenso</a>
+	<a class="btn no-pjax" href="{% url "link_list_latest" %}">Recientes</a>
+	<a class="btn no-pjax" href="{% url "link_list_top" %}">Más votadas</a>
 {% endif %}
 
 

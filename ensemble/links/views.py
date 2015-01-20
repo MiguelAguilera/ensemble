@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from future.builtins import super
 
@@ -39,8 +40,8 @@ class UserFilterView(ListView):
             qs = context["object_list"].filter(user=profile_user)
             context["object_list"] = qs
         context["profile_user"] = profile_user
-        context["no_data"] = ("Whoa, there's like, literally no data here, "
-                              "like seriously, I totally got nothin.")
+        context["no_data"] = ("Todavía no hay nada aquí... "
+                              "Anímate a hacer la primera propuesta!")
         return context
 
 

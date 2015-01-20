@@ -33,14 +33,12 @@ class Link(Displayable, Ownable):
     rating = RatingField()
     comments = CommentsField()
     
-    YEAR_IN_SCHOOL_CHOICES = (
-        ('None', '---'),
-        ('Municipalismo', 'Municipalismo'),
-        ('Cultura', 'Cultura'),
-        ('Educación', 'Educación'),
-    )
-    tags = models.CharField(max_length=50, choices=YEAR_IN_SCHOOL_CHOICES, default='')
-
+    taglist=['Municipalismo','Educación','Sanidad','Economía','Gobierno, transparencia y participación','Medio ambiente']
+    tag_choices = [('None', '---')]
+    for tag in taglist:
+        tag_choices = tag_choices + [(tag,tag)]
+    print tag_choices
+    tags = models.CharField(max_length=50, choices=tag_choices, default='')
     def get_absolute_url(self):
         return reverse("link_detail", kwargs={"slug": self.slug})
 
@@ -56,6 +54,7 @@ class Link(Displayable, Ownable):
         return current_request().build_absolute_uri(self.get_absolute_url())
 
     def save(self, *args, **kwargs):
+        
         keywords = []
         if not self.keywords_string and getattr(settings, "AUTO_TAG", False):
             variations = lambda word: [word,
@@ -69,10 +68,8 @@ class Link(Displayable, Ownable):
             	if k!='None':
             	    Keyword.objects.get_or_create(title=k)
             for keyword in Keyword.objects.filter(lookup):
-            	print keyword
-            	print type(keyword)
                 self.keywords.add(AssignedKeyword(keyword=keyword))
-
+        
 
 class Profile(models.Model):
 
