@@ -41,15 +41,22 @@
 <!--            <span class="domain">({{ link.domain }})</span>-->
         </h2>
         
-        por <a class="profile" href="{% url "profile" link.user.username %}">{{ link.user.profile }}</a>
+        autor: <a class="profile" href="{% url "profile" link.user.username %}">{{ link.user.profile }}</a> |
         hace {{ link.publish_date|short_timesince }} |
-        {% keywords_for link as tags %}
-        {% for tag in tags %}
-        <a href="{% url "link_list_tag" tag.slug %}">{{ tag }}</a> |
-        {% endfor %}
+<!--        {% keywords_for link as tags %}-->
+<!--        {% for tag in tags %}-->
+<!--        <a href="{% url "link_list_tag" tag.slug %}">{{ tag }}</a> |-->
+<!--        {% endfor %}-->
         {{ link.rating_count }} votos |
         {{ link.rating_average|addfloat:"1.0"|mult:"50"|floatformat:"0"}}% positivos |
         <a class="comments" href="{{ link.get_absolute_url }}">{{ link.comments_count }} comentario{{ link.comments_count|pluralize }} </a>
+        {% keywords_for link as tags %}
+        {% if tags %}
+        	<br> Sección:
+        	{% for tag in tags %}
+		    <a href="{% url "link_list_tag" tag.slug %}">{{ tag }}</a>
+		    {% endfor %}
+        {% endif %}
     </div>
 </div>
 {% empty %}
