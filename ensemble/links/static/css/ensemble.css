@@ -40,7 +40,7 @@ footer {background: none;}
 
 /* Big horizontal grey line everywhere */
 h1, .link-item, .comment-item, .comment-links, #comments h3 {
-    border:0 solid rgba(0,0,0,.02);width: 75%;
+    border:0 solid rgba(0,0,0,.02);width: 70%;
 }
 h1, .link-item, .comment-item, .comment-links {border-bottom-width:5px;}
 #comments h3 {border-top-width:5px;}
