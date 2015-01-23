@@ -38,7 +38,6 @@ class Link(Displayable, Ownable):
     tag_choices = [('None', '---')]
     for tag in taglist:
         tag_choices = tag_choices + [(tag,tag)]
-    print tag_choices
     tags = models.CharField(max_length=50, choices=tag_choices, default='')
     def get_absolute_url(self):
         return reverse("link_detail", kwargs={"slug": self.slug})
