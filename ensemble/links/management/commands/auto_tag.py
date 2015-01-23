@@ -56,7 +56,7 @@ class Command(BaseCommand):
 #                return not (char in punctuation or char.isdigit())
 #            return filter(valid_char, slugify(tag[0]))
 
-        tags = ['Municipalismo','Educación','Sanidad','Economía','Gobierno, transparencia y participación','Medio ambiente']
+        tags = ['Municipalismo','Educación','Cultura']
         for tag in tags:
             print("Creating keyword %s" % tag)
             Keyword.objects.get_or_create(title=tag)
