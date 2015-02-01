@@ -34,11 +34,11 @@ class Link(Displayable, Ownable):
     rating = RatingField()
     comments = CommentsField()
     
-    taglist=['Municipalismo','Educación','Cultura']
+    taglist=['Municipalismo','Políticas de Empleo',]
     tag_choices = [('None', '---')]
     for tag in taglist:
         tag_choices = tag_choices + [(tag,tag)]
-    tags = models.CharField(max_length=50, choices=tag_choices, default='')
+    tags = models.CharField(max_length=50, choices=tag_choices, default='Municipalismo')
     def get_absolute_url(self):
         return reverse("link_detail", kwargs={"slug": self.slug})
 
@@ -57,10 +57,11 @@ class Link(Displayable, Ownable):
         
         keywords = []
         if not self.keywords_string and getattr(settings, "AUTO_TAG", False):
-            variations = lambda word: [word,
-                sub("^([^A-Za-z0-9])*|([^A-Za-z0-9]|s)*$", "", word),
-                sub("^([^A-Za-z0-9])*|([^A-Za-z0-9])*$", "", word)]
-            keywords = sum(map(variations, split("\s|/", self.tags)), [])
+#            variations = lambda word: [word,
+#                sub("^([^A-Za-z0-9])*|([^A-Za-z0-9]|s)*$", "", word),
+#                sub("^([^A-Za-z0-9])*|([^A-Za-z0-9])*$", "", word)]
+#            keywords = sum(map(variations, split("\s|/", self.tags)), [])
+            keywords=[self.tags]
         super(Link, self).save(*args, **kwargs)
         if keywords:
             lookup = reduce(ior, [Q(title__iexact=k) for k in keywords])
