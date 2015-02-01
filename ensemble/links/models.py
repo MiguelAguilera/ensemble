@@ -34,7 +34,7 @@ class Link(Displayable, Ownable):
     rating = RatingField()
     comments = CommentsField()
     
-    taglist=['Municipalismo','Cultura','Educación','Sanidad','Economía','Democracia']
+    taglist=['Municipalismo','Educación','Cultura']
     tag_choices = [('None', '---')]
     for tag in taglist:
         tag_choices = tag_choices + [(tag,tag)]
